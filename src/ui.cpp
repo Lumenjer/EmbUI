@@ -217,7 +217,7 @@ void Interface::date(const String &id, const String &label){
 }
 
 void Interface::datetime(const String &id, const String &value, const String &label, bool step){
-    html_input(id, String(F("datetime-local")), value, label, false, true);
+    html_input(id, String(F("datetime-local")), value, label, false, step);
 }
 
 void Interface::datetime(const String &id, const String &label, bool step){
