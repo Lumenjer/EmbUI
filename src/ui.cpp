@@ -21,7 +21,7 @@ void Interface::html_input(const String &id, const String &type, const String &v
     obj[FPSTR(P_value)] = value;
     obj[FPSTR(P_label)] = label;
     if (direct) obj[FPSTR(P_directly)] = true;
-    if (step) obj[FPSTR(P_step)] = step;
+    if (step) obj[FPSTR(P_step)] = 1;
 
     frame_add_safe(obj.as<JsonObject>());
 }
