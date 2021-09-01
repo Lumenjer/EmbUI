@@ -300,6 +300,6 @@ function updateLang(){
 
     }
 
-    httpRequestXload.open('GET', 'js/glossaryEff.json', true);
+    httpRequestXload.open('GET', 'local/glossaryEff.json', true);
     httpRequestXload.send(null);
     }

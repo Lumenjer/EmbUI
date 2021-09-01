@@ -14,10 +14,10 @@ function refreshPage(){
 
 // Дополнительный обработчик для кнопки переключения языка
 document.addEventListener('change', (e)=>{
-	if(e.target!=document.getElementById('lang_new2')) return;
+	if(e.target!=document.getElementById('lang')) return;
 	
 	console.log('--| switch lang ru!');
-	langs = document.getElementById('lang_new2').value;
+	langs = document.getElementById('lang').value;
 	localStorage.setItem('lang', langs);
 	loadLang();
 	// updateLang();
@@ -58,7 +58,7 @@ function getLang(){
 			refreshPage();
 		// }
 	}
-	httpRequest.open('GET', 'js/' + langs + '.json', true);
+	httpRequest.open('GET', 'local/' + langs + '.json', true);
 	httpRequest.send(null);
 }
 

@@ -304,5 +304,5 @@ window.addEventListener("popstate", function(e){
 });
 
 window.addEventListener("click", function(){
-	document.getElementById('lang_new2').value = langs;
+	document.getElementById('lang').value = langs;
 });
