@@ -1,3 +1,67 @@
+// 
+function refreshPage(){
+	let currnt = window.location.href;
+	console.log("Curretn location", currnt);
+	let currntPage = {};
+	let idx = currnt.indexOf('?');
+	if (idx) {
+		console.log("CHECK", currnt.slice(idx+1));
+		currntPage[currnt.slice(idx+1)] = null;
+	}
+	ws.send_post({main:null});
+	ws.send_post(currntPage);
+}
+
+// Дополнительный обработчик для кнопки переключения языка
+document.addEventListener('change', (e)=>{
+	if(e.target!=document.getElementById('lang_new2')) return;
+	
+	console.log('--| switch lang ru!');
+	langs = document.getElementById('lang_new2').value;
+	localStorage.setItem('lang', langs);
+	loadLang();
+	// updateLang();
+	// refreshPage();
+});
+
+
+
+/**
+ * loadLang() function. Вызывается для переключения между словарями
+ * Если была нажата кнопка смены языка - возьмет значение оттуда, если нет - возьмет значение из конфига
+ */
+function loadLang(){
+	let checkLocalStorage = localStorage.getItem('lang');
+	if (checkLocalStorage !== null){
+		langs = checkLocalStorage;
+		console.log("Local Storage lang", checkLocalStorage, "langs", langs);
+	}
+	else 
+		langs = "eng";
+
+	getLang();
+}
+loadLang();
+
+
+let glossary = {};
+/**
+ * getLang() function. Вызывается для переключения между словарями
+ * Если была нажата кнопка смены языка - возьмет значение оттуда, если нет - возьмет значение из конфига
+ */
+function getLang(){
+	httpRequest = new XMLHttpRequest();
+	httpRequest.overrideMimeType('application/json');
+	httpRequest.onload = ()=>{
+		// if (this.readyState == 4 && this.status == 200) {
+			glossary = JSON.parse(httpRequest.responseText);
+			refreshPage();
+		// }
+	}
+	httpRequest.open('GET', 'js/' + langs + '.json', true);
+	httpRequest.send(null);
+}
+
 var go = function(param, context){
 	if (!arguments.length) return new GO(document);
 	if (typeof param == "string") return (new GO(context || document)).go(param);
@@ -105,7 +169,16 @@ go.merge = function(base, data, idx) {
 		if (typeof data[i] == 'object') {
 			if (typeof base[id] != 'object') base[id] = (data[i] instanceof Array)? [] : {};
 			this.merge(base[id], data[i], (i == "block")? data.idx : undefined);
-		} else base[id] = data[i];
+		} 
+		else if (id == "label" || id == "blabel" || id == "drawClear") {   // "blabel" и "drawClear" касаются только лампы, но пусть временно поживут тут
+			if (!isNaN(data[i])){
+				base[id] = glossary[Number(data[i])];
+			}
+			else {
+				base[id] = data[i];
+			}
+		}
+		else base[id] = data[i];
 	}
 	return base;
 }

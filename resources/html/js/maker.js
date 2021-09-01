@@ -73,10 +73,17 @@ var render = function(){
 			for (var i = 0; i < frame.length; i++) if (typeof frame[i] == "object") {
 				if (frame[i].section == "menu") {
 					global.menu =  frame[i].block;
-					document.title = obj.app + " - " + obj.mc;
-					global.app = obj.app;
+					if (!isNaN(obj.app)){
+						document.title = glossary[Number(obj.app)] + " - " + obj.mc;
+						global.app = glossary[Number(obj.app)];
+					}
+					else {
+						document.title = obj.app + " - " + obj.mc;
+						global.app = obj.app;
+					}
 					global.mc = obj.mc;
 					global.ver = obj.ver;
+					global.lan = langs;
 					if (!global.menu_id) global.menu_id = global.menu[0].value
 					this.menu();
 				} else
@@ -179,6 +186,7 @@ function xload(msg){
 		 if (xload_cb(msg)){
 			var rdr = this.rdr = render();	// Interface rederer to pass updated objects to
 			rdr.make(msg);
+			updateLang();   // Вызываем для перевода внешних ресурсов
 		 }
 	})
 }
@@ -293,4 +301,8 @@ window.addEventListener("popstate", function(e){
 		var data = {}; data[e] = null;
 		ws.send_post(data);
 	}
+});
+
+window.addEventListener("click", function(){
+	document.getElementById('lang_new2').value = langs;
 });

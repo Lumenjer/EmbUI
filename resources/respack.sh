@@ -24,7 +24,7 @@ freshtag(){
 }
 
 
-mkdir -p ./data/css ./data/js
+mkdir -p ./data/css ./data/js ./data/local
 cat html/css/pure-min.css html/css/grids.css | gzip -9 > ./data/css/pure.css.gz
 cat html/css/*_default.css | gzip -9 > ./data/css/style.css.gz
 cat html/css/*_light.css | gzip -9 > ./data/css/style_light.css.gz
@@ -39,6 +39,8 @@ cp html/css/*.webp ./data/css/
 cat html/js/*.js | gzip -9 > ./data/js/embui.js.gz
 cat html/index.html | gzip -9 > ./data/index.html.gz
 cat html/favicon.ico | gzip -9 > ./data/favicon.ico.gz
+cat html/local/eng.json | gzip -9 > ./data/local/eng.json.gz
+cat html/local/rus.json | gzip -9 > ./data/local/rus.json.gz
 cp html/.exclude.files ./data/
 
 # update TZ info
