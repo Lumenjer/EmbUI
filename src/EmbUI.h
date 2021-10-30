@@ -259,7 +259,6 @@ class EmbUI
     {
         memset(mc,0,sizeof(mc));
 
-        ts.addTask(embuischedw);    // WiFi helper
         tAutoSave.set(sysData.asave * AUTOSAVE_MULTIPLIER * TASK_SECOND, TASK_ONCE, [this](){LOG(println, F("UI: AutoSave")); save();} );    // config autosave timer
         ts.addTask(tAutoSave);
         EmbUI::pInstance = this;
@@ -356,7 +355,7 @@ class EmbUI
     /**
      * Подключение к WiFi AP в клиентском режиме
      */
-    void wifi_connect(const char *ssid=nullptr, const char *pwd=nullptr);
+    void wifi_connect(const String &ssid="", const String &pwd="");
 
     /**
      * метод для установки коллбеков на системные события, типа:
@@ -453,7 +452,7 @@ class EmbUI
     void getAPmac();
 
     // Scheduler tasks
-    Task embuischedw;       // WiFi reconnection helper
+    Task *embuischedw = nullptr;       // WiFi reconnection helper
     Task *tValPublisher = nullptr;     // Status data publisher
     Task tHouseKeeper;     // Maintenance task, runs every second
     Task tAutoSave;          // config autosave timer
