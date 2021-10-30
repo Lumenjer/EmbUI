@@ -3,15 +3,6 @@
 #pragma once
 
 /**
- *  Dictionary size,
- *  must be more or equal to the number of messages in TD Enum
- */
-#define DICT_SIZE 71
-
-
-
-
-/**
  * Text-Dictionary Enums for language resources
  * the order of enums must match with elements in dictionary
  *
@@ -88,7 +79,8 @@ enum TD : uint8_t {
     D_WIFI_STA,
     D_WIFI_AP,
     D_WIFI_APSTA,
-    D_MSG_CONF
+    D_MSG_CONF,
+    DICT_SIZE               // Должен быть в конце списка!
 };
 
 
