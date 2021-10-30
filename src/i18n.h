@@ -84,7 +84,8 @@ enum TD : uint8_t {
     D_W_SAT,
     D_LANG,
     D_Scan,
-    D_FTP
+    D_FTP,
+    D_MSG_CONF
 };
 
 
@@ -162,6 +163,7 @@ static const char T_EN_W_WED[] PROGMEM = "Wednesday";
 static const char T_EN_W_THU[] PROGMEM = "Thursday";
 static const char T_EN_W_FRI[] PROGMEM = "Friday";
 static const char T_EN_W_SAT[] PROGMEM = "Saturday";
+static const char T_EN_MSG_CONF[] PROGMEM = "Sure?";
 
 // Русские тексты (порядок значения не имеет)
 static const char T_RU_LANG[] PROGMEM = "Язык интерфейса";
@@ -221,6 +223,7 @@ static const char T_RU_W_THU[] PROGMEM = "Четверг";
 static const char T_RU_W_FRI[] PROGMEM = "Пятница";
 static const char T_RU_W_SAT[] PROGMEM = "Суббота";
 static const char T_RU_W_SUN[] PROGMEM = "Воскресенье";
+static const char T_RU_MSG_CONF[] PROGMEM = "Уверены?";
 
 
 
@@ -301,7 +304,8 @@ static const char *const T_DICT[][DICT_SIZE] PROGMEM = {
     T_RU_W_SAT,
     T_RU_LANG,
     T_RU_Scan,
-    T_EN_FTP
+    T_EN_FTP,
+    T_RU_MSG_CONF
     },
 
 
@@ -373,6 +377,7 @@ static const char *const T_DICT[][DICT_SIZE] PROGMEM = {
     T_EN_W_SAT,
     T_EN_LANG,
     T_EN_Scan,
-    T_EN_FTP
+    T_EN_FTP,
+    T_EN_MSG_CONF
   }
 };
