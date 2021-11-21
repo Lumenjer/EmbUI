@@ -48,7 +48,7 @@
             "version": "https://github.com/me-no-dev/ESPAsyncUDP",
             "platforms": ["espressif8266"]},
          {"owner": "Me-No-Dev",
-            "name": "ESPAsyncUDP",
+            "name": "ESP32 Async UDP",
             "version": "*",
             "platforms": ["espressif32"]},
          {"owner": "charno",
