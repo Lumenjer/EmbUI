@@ -40,4 +40,12 @@ void EmbUI::udpLoop(){
     }
     if(!udpApply) return;
 }
+#else
+void EmbUI::udp(){}
+
+void EmbUI::udp(const String &message);
+
+void EmbUI::udpBegin(){}
+
+void EmbUI::udpLoop(){}
 #endif
