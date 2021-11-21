@@ -95,7 +95,7 @@
 #define MAX_WS_CLIENTS 4
 #endif
 
-#define EXTERNAL_WS_BUFFER
+// #define EXTERNAL_WS_BUFFER
 
 #ifdef EXTERNAL_WS_BUFFER
 #ifndef EXT_WS_BUFFER_SIZE
