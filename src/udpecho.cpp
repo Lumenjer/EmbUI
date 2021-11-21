@@ -4,6 +4,7 @@
 // and others people
 
 #include "EmbUI.h"
+#ifdef ESP8266
 #include <ESPAsyncUDP.h>
 
 AsyncUDP Udp;
@@ -39,3 +40,4 @@ void EmbUI::udpLoop(){
     }
     if(!udpApply) return;
 }
+#endif
