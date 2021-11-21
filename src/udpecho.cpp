@@ -43,7 +43,7 @@ void EmbUI::udpLoop(){
 #else
 void EmbUI::udp(){}
 
-void EmbUI::udp(const String &message);
+void EmbUI::udp(const String &message){}
 
 void EmbUI::udpBegin(){}
 
