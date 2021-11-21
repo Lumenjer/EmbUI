@@ -5,7 +5,7 @@
 
 #include "EmbUI.h"
 
-#ifdef ESP32
+#if defined (ESP32) || defined (ARDUINO_ESP32_DEV)
 #include <AsyncUDP.h>
 #elif defined (ESP8266)
 #include <ESPAsyncUDP.h>
