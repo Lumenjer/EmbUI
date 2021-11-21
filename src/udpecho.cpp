@@ -4,7 +4,8 @@
 // and others people
 
 #include "EmbUI.h"
-#ifdef ESP8266
+
+#ifdef TEMP_OFF
 #include <ESPAsyncUDP.h>
 
 AsyncUDP Udp;
